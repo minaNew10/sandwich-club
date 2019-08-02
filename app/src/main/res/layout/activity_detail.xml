@@ -1,85 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<FrameLayout
     android:layout_height="match_parent"
-    tools:context="com.udacity.sandwichclub.DetailActivity">
-
-    <ImageView
-        android:id="@+id/image_iv"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/sandwich_picture_content_description"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.udacity.sandwichclub.DetailActivity">
 
-    <TextView
-        android:id="@+id/origin_tv"
-        style="@style/textviews_style"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/origin_label" />
+            <ImageView
+                android:id="@+id/image_iv"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/sandwich_picture_content_description"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/also_known_label"
-        style="@style/labels_style_detail_activity"
-        android:text="@string/detail_also_known_as_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_name_tv" />
+            <TextView
+                android:id="@+id/origin_tv"
+                style="@style/textviews_style"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/origin_label" />
 
-    <TextView
-        android:id="@+id/ingredients_label"
+            <TextView
+                android:id="@+id/also_known_label"
+                style="@style/labels_style_detail_activity"
+                android:text="@string/detail_also_known_as_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image_iv"/>
 
-        style="@style/labels_style_detail_activity"
-        android:text="@string/detail_ingredients_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/origin_tv" />
+            <TextView
+                android:id="@+id/ingredients_label"
 
-    <TextView
-        android:id="@+id/origin_label"
-        style="@style/labels_style_detail_activity"
-        android:text="@string/detail_place_of_origin_label"
+                style="@style/labels_style_detail_activity"
+                android:text="@string/detail_ingredients_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/origin_tv" />
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/also_known_tv" />
+            <TextView
+                android:id="@+id/origin_label"
+                style="@style/labels_style_detail_activity"
+                android:text="@string/detail_place_of_origin_label"
 
-    <TextView
-        android:id="@+id/description_tv"
-        style="@style/textviews_style"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description_label" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/also_known_tv" />
 
-    <TextView
-        android:id="@+id/ingredients_tv"
-        style="@style/textviews_style"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingredients_label" />
+            <TextView
+                android:id="@+id/description_tv"
+                style="@style/textviews_style"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/description_label" />
 
-    <TextView
-        android:id="@+id/also_known_tv"
-        style="@style/textviews_style"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/also_known_label" />
+            <TextView
+                android:id="@+id/ingredients_tv"
+                style="@style/textviews_style"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ingredients_label" />
 
-    <TextView
-        android:id="@+id/description_label"
+            <TextView
+                android:id="@+id/also_known_tv"
+                style="@style/textviews_style"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/also_known_label" />
 
-        style="@style/labels_style_detail_activity"
-        android:text="@string/detail_description_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingredients_tv" />
+            <TextView
+                android:id="@+id/description_label"
 
-    <TextView
-        android:id="@+id/main_name_tv"
-        style="@style/textviews_style"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_iv" />
-</android.support.constraint.ConstraintLayout>
+                style="@style/labels_style_detail_activity"
+                android:text="@string/detail_description_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ingredients_tv" />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</FrameLayout>
