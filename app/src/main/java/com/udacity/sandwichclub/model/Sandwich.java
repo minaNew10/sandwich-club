@@ -1,5 +1,13 @@
 package com.udacity.sandwichclub.model;
 
+import android.databinding.BindingAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+import com.udacity.sandwichclub.R;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sandwich {
@@ -34,8 +42,13 @@ public class Sandwich {
         this.mainName = mainName;
     }
 
-    public List<String> getAlsoKnownAs() {
-        return alsoKnownAs;
+    public String getAlsoKnownAs() {
+        if (alsoKnownAs.size() > 0) {
+            String knownAsString = alsoKnownAs.toString();
+            return knownAsString.substring(1, knownAsString.length() - 1) + ".";
+        } else {
+            return "No Data Available";
+        }
     }
 
     public void setAlsoKnownAs(List<String> alsoKnownAs) {
@@ -43,7 +56,11 @@ public class Sandwich {
     }
 
     public String getPlaceOfOrigin() {
-        return placeOfOrigin;
+        if (placeOfOrigin.length() > 0)
+            return placeOfOrigin + ".";
+        else {
+            return "No Data Available";
+        }
     }
 
     public void setPlaceOfOrigin(String placeOfOrigin) {
@@ -66,11 +83,24 @@ public class Sandwich {
         this.image = image;
     }
 
-    public List<String> getIngredients() {
-        return ingredients;
+    public String getIngredients() {
+        String ing = ingredients.toString();
+        return ing.substring(1,ing.length()-1) + ".";
     }
 
     public void setIngredients(List<String> ingredients) {
         this.ingredients = ingredients;
     }
+
+    @BindingAdapter("sandwichImage")
+    public static void loadImage(ImageView imageView, String imageUrl) {
+        Picasso.with(imageView.getContext())
+                .load(imageUrl)
+                .noFade()
+                .placeholder(R.mipmap.ic_launcher)
+                .error(R.drawable.download)
+                .into(imageView);
+    }
+
+
 }

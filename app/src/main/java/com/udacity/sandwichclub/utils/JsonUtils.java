@@ -12,6 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JsonUtils {
+    private static final String NAME_OBJECT = "name";
+    private static final String MAIN_NAME = "mainName";
+    private static final String ALSO_KNOWN = "alsoKnownAs";
+    private static final String ORIGIN = "placeOfOrigin";
+    private static final String DESCRIPTION = "description";
+    private static final String IMAGE = "image";
+    private static final String INGREDIENTS = "ingredients";
 
     public static Sandwich parseSandwichJson(String json) {
         if(TextUtils.isEmpty(json))
@@ -23,24 +30,23 @@ public class JsonUtils {
 
         try {
             JSONObject rootJsonObject = new JSONObject(json);
-            JSONObject nameObject = rootJsonObject.getJSONObject("name");
-            if(nameObject.has("mainName")){
-                mainName = nameObject.getString("mainName");
-            }
-            JSONArray knownNames = nameObject.getJSONArray("alsoKnownAs");
+            JSONObject nameObject = rootJsonObject.optJSONObject(NAME_OBJECT);
+            mainName = nameObject.optString(MAIN_NAME);
+
+            JSONArray knownNames = nameObject.optJSONArray(ALSO_KNOWN);
             if(knownNames.length() > 0){
                 for(int i = 0; i < knownNames.length();i++){
                     String name = knownNames.getString(i);
                     alsoKnownNames.add(name);
                 }
             }
-            placeOfOrigin = rootJsonObject.getString("placeOfOrigin");
-            description = rootJsonObject.getString("description");
-            image = rootJsonObject.getString("image");
-            JSONArray ingreArray = rootJsonObject.getJSONArray("ingredients");
+            placeOfOrigin = rootJsonObject.optString(ORIGIN,"No Data Available");
+            description = rootJsonObject.optString(DESCRIPTION,"No Data Available");
+            image = rootJsonObject.optString(IMAGE);
+            JSONArray ingreArray = rootJsonObject.optJSONArray(INGREDIENTS);
             if(ingreArray.length() > 0){
                 for(int i = 0; i < ingreArray.length();i++){
-                    String name = ingreArray.getString(i);
+                    String name = ingreArray.optString(i);
                     ingredients.add(name);
                 }
             }
